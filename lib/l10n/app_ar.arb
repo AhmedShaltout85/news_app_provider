@@ -1,0 +1,22 @@
+{
+"home" : "الصفحة الرئيسية",
+"news_app" : "تطبيق الاخبار",
+"good_morning": "صباح الخير",
+"here_is_some_news_for_you": "هنا بعض الاخبار لك",
+"view_all" : "عرض الكل",
+"go_to_home" : "الذهاب للصفحة الرئيسية",
+"theme" : "الثيم",
+"language" : "اللغة",
+"arabic" : "العربية",
+"english" : "الانجليزية",
+"dark" : "مظلم",
+"light" : "مضيء",
+"general" : "عام",
+"abc_news": "أبك نيوز",
+"aftonposten": "افتون بوستن",
+"ansa_it": "انسا إيت",
+"ary_news": "اري نيوز",
+"axios": "اكسيوس",
+"search" : "بحث",
+"view_full_article" : "عرض المقال الكامل"
+}
