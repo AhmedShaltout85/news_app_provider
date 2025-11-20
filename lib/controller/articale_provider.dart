@@ -1,48 +1,35 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 
-import '../repositories/app_repository.dart';
+import '../repositories/app_api_service.dart';
+import '../repositories/services/app_api_service_impl.dart';
 
 class ArticleProvider with ChangeNotifier {
-  final AppRepository appRepository;
   List<Map<String, dynamic>> newsList = [];
   List<Map<String, dynamic>> categoryNewsList = [];
   bool isLoading = false;
 
-  ArticleProvider({required this.appRepository});
-
+  final AppApiService appApiService = AppApiServiceImpl();
   Future<void> getNewsData() async {
-    newsList = await appRepository.getNewsData();
+    newsList = await appApiService.getNewsData();
     isLoading = true;
     notifyListeners();
   }
 
   Future<void> getCategoryNewsData(String category) async {
-    categoryNewsList = await appRepository.getCategoryData(category);
+    categoryNewsList = await appApiService.getCategoryData(category);
     isLoading = true;
     notifyListeners();
   }
 
-  Future<void> searchNews(String query) async {
+  void searchNews(String query) {
     if (query.isEmpty || query == ' ') {
-      await getNewsData();
-      return;
-    }
-
-    try {
-      getNewsData().then((_) {
-        newsList = newsList
-            .where((article) => article['title']
-                .toLowerCase()
-                .contains(query.trim().toLowerCase()))
-            .toList();
-      });
-    } catch (e) {
-      log(e.toString());
-      await getNewsData();
-    } finally {
-      isLoading = true;
+      getNewsData();
+    } else {
+      newsList = newsList
+          .where((article) => article['title']
+              .toLowerCase()
+              .contains(query.trim().toLowerCase()))
+          .toList();
       notifyListeners();
     }
   }

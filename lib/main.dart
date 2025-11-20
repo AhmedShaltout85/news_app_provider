@@ -6,7 +6,6 @@ import 'package:news_app/controller/locale_provider.dart';
 import 'package:news_app/controller/theme_provider.dart';
 import 'package:news_app/screens/search/search_screen.dart';
 import 'package:news_app/screens/splash/splash_screen.dart';
-import 'package:news_app/services/app_api_service.dart';
 import 'package:news_app/utils/app_routes.dart';
 import 'package:news_app/utils/app_theme.dart';
 import 'package:provider/provider.dart';
@@ -21,7 +20,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
         ChangeNotifierProvider(create: (_) => LocaleProvider()),
-        ChangeNotifierProvider(create: (_) => ArticleProvider(appRepository: AppApiService())..getNewsData()),
+        ChangeNotifierProvider(create: (_) => ArticleProvider()..getNewsData()),
       ],
       child: const MyApp(),
     ),

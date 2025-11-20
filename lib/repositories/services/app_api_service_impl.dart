@@ -1,21 +1,21 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:news_app/repositories/app_repository.dart';
+import 'package:news_app/repositories/app_api_service.dart';
 import 'package:news_app/utils/app_constants.dart';
 
-class AppApiService implements AppRepository {
+class AppApiServiceImpl implements AppApiService {
   late Dio dio;
 
   // Private constructor
-  AppApiService._() {
+  AppApiServiceImpl._() {
     dio = Dio();
   }
 
-  static final AppApiService _instance = AppApiService._();
+  static final AppApiServiceImpl _instance = AppApiServiceImpl._();
 
   // Factory constructor returns the same instance
-  factory AppApiService() => _instance;
+  factory AppApiServiceImpl() => _instance;
 
   @override
   Future<List<Map<String, dynamic>>> getNewsData() async {
