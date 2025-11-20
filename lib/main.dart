@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 
 import 'controller/articale_provider.dart';
 import 'screens/details/detail_screen.dart';
-import 'screens/news.dart';
+import 'screens/news_test_screen/news.dart';
 
 void main() {
   runApp(

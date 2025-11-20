@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../controller/articale_provider.dart';
-import '../model/article_model.dart';
+import '../../controller/articale_provider.dart';
+import '../../model/article_model.dart';
 
 class NewsScreen extends StatelessWidget {
   const NewsScreen({super.key});
