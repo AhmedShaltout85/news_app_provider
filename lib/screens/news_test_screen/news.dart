@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/utils/app_routes.dart';
 import 'package:provider/provider.dart';
 
 import '../../controller/articale_provider.dart';
@@ -99,6 +100,11 @@ class ArticleCard extends StatelessWidget {
         ),
         onTap: () {
           // Navigate to article detail
+          Navigator.pushNamed(
+            context,
+            AppRoutes.detailRouteName,
+            arguments: article,
+          );
         },
       ),
     );
