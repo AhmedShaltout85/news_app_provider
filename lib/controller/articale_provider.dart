@@ -1,16 +1,20 @@
-import 'package:flutter/material.dart';
+import 'dart:developer';
 
-import '../repositories/app_api_service.dart';
-import '../repositories/services/app_api_service_impl.dart';
+import 'package:flutter/material.dart';
+import 'package:news_app/model/article_model.dart';
+
+import '../network_repos/remote_repos/app_api_service.dart';
+import '../network_repos/remote_repos/app_api_service_impl.dart';
 
 class ArticleProvider with ChangeNotifier {
-  List<Map<String, dynamic>> newsList = [];
-  List<Map<String, dynamic>> categoryNewsList = [];
+  List<Article> newsList = [];
+  List<Article> categoryNewsList = [];
   bool isLoading = false;
 
   final AppApiService appApiService = AppApiServiceImpl();
   Future<void> getNewsData() async {
     newsList = await appApiService.getNewsData();
+    log("NEWS LIST LENGTH ${newsList.length}");
     isLoading = true;
     notifyListeners();
   }
@@ -26,7 +30,7 @@ class ArticleProvider with ChangeNotifier {
       getNewsData();
     } else {
       newsList = newsList
-          .where((article) => article['title']
+          .where((article) => article.title
               .toLowerCase()
               .contains(query.trim().toLowerCase()))
           .toList();

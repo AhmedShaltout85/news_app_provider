@@ -9,50 +9,47 @@ class NewsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var newsProvider = context.watch<ArticleProvider>();
     return Scaffold(
       appBar: AppBar(
         title: const Text('News App'),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
-            onPressed: () => context.read<ArticleProvider>().getNewsData(),
+            onPressed: () =>
+                Provider.of<ArticleProvider>(context, listen: false)
+                    .getNewsData(),
           ),
         ],
       ),
-      body: Consumer<ArticleProvider>(
-        builder: (context, provider, child) {
-          if (provider.isLoading && provider.newsList.isEmpty) {
-            return const Center(child: CircularProgressIndicator());
-          }
-
-          return Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Search articles...',
-                    prefixIcon: Icon(Icons.search),
+      body: newsProvider.isLoading == false
+          ? const Center(child: CircularProgressIndicator())
+          : Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Search articles...',
+                      prefixIcon: Icon(Icons.search),
+                    ),
+                    onChanged: (value) {
+                      newsProvider.searchNews(value);
+                    },
                   ),
-                  onChanged: (value) {
-                    provider.searchNews(value);
-                  },
                 ),
-              ),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: provider.newsList.length,
-                  itemBuilder: (context, index) {
-                    final article = provider.newsList[index];
-                    return ArticleCard(article: Article.fromJson(article));
-                  },
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: newsProvider.newsList.length,
+                    itemBuilder: (context, index) {
+                      final article = newsProvider.newsList[index];
+                      return ArticleCard(article: article);
+                    },
+                  ),
                 ),
-              ),
-            ],
-          );
-        },
-      ),
+              ],
+            ),
     );
   }
 }

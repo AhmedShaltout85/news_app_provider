@@ -1,23 +1,21 @@
-import 'article_model.dart';
 
-class NewsResponse {
+class Articles {
   final String status;
   final int totalResults;
-  final List<Article> articles;
+  final List<dynamic> articles;
 
-  const NewsResponse({
+  const Articles({
     required this.status,
     required this.totalResults,
     required this.articles,
   });
 
-  factory NewsResponse.fromJson(Map<String, dynamic> json) {
-    return NewsResponse(
-      status: json['status'] as String? ?? '',
-      totalResults: json['totalResults'] as int? ?? 0,
-      articles: List<Article>.from((json['articles'] as List<dynamic>?)?.map(
-              (article) => Article.fromJson(article as Map<String, dynamic>)) ??
-          []),
+  factory Articles.fromJson(Map<String, dynamic> json) {
+    return Articles(
+      status: json['status']?.toString() ?? '',
+      totalResults: (json['totalResults'] as num?)?.toInt() ?? 0,
+      articles: json['articles'] 
+         
     );
   }
 
