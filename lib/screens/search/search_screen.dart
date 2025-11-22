@@ -3,7 +3,7 @@ import 'package:news_app/controller/articale_provider.dart';
 import 'package:news_app/model/article_model.dart';
 import 'package:provider/provider.dart';
 
-import '../general/tabs/widgets/custom_general_list_view_body.dart';
+import '../general/widgets/custom_general_list_view_body.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});

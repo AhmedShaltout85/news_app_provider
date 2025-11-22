@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../common_widgets/custom_drawer.dart';
 import '../../controller/articale_provider.dart';
-import 'tabs/widgets/item_card.dart';
+import 'widgets/item_card.dart';
 
 class CategoryScreen extends StatelessWidget {
   

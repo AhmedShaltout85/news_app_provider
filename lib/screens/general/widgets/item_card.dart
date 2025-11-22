@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/model/article_model.dart';
 
-import '../../../../utils/app_routes.dart';
+import '../../../utils/app_routes.dart';
 
 class ItemCard extends StatelessWidget {
   final Article article;
