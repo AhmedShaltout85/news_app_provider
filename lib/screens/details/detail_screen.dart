@@ -10,17 +10,7 @@ class DetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final Article data = ModalRoute.of(context)!.settings.arguments as dynamic;
 
-    // if (args == null || args is! Map) {
-    //   return const Scaffold(
-    //     body: Center(
-    //       child: Text("No data received"),
-    //     ),
-    //   );
-    // }
-
-    // final data = args;
-
-    return Scaffold(
+       return Scaffold(
       appBar: AppBar(
         centerTitle: false,
         title: Text(
@@ -60,7 +50,7 @@ class DetailScreen extends StatelessWidget {
                   decoration: TextDecoration.underline,
                 ),
               ),
-              Text(data.publishedAt.timeZoneName,
+              Text(data.publishedAt.toString(),
                   style: const TextStyle(fontSize: 11)),
               Row(
                 children: [

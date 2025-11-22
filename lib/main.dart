@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/screens/general/general_screen.dart';
+import 'package:news_app/screens/general/category_screen.dart';
 import 'package:news_app/screens/home/home_screen.dart';
 import 'package:news_app/l10n/app_localizations.dart';
 import 'package:news_app/controller/locale_provider.dart';
@@ -36,11 +36,11 @@ class MyApp extends StatelessWidget {
     final localeProvider = Provider.of<LocaleProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.newsRouteName,
+      initialRoute: AppRoutes.homeRouteName,
       routes: {
         AppRoutes.splashRouteName: (context) => SplashScreen(),
         AppRoutes.homeRouteName: (context) => HomeScreen(),
-        AppRoutes.generalRouteName: (context) => GeneralScreen(),
+        AppRoutes.categoryRouteName: (context) => CategoryScreen(),
         AppRoutes.detailRouteName: (context) => DetailScreen(),
         AppRoutes.searchRouteName: (context) => SearchScreen(),
         AppRoutes.newsRouteName: (context) => NewsScreen(),
@@ -51,8 +51,7 @@ class MyApp extends StatelessWidget {
       darkTheme: AppTheme.darkTheme,
       themeMode: themeProvider.themeMode,
       locale: localeProvider.locale,
-      // locale: Locale('en'),
-      // themeMode: ThemeMode.dark,
+    
     );
   }
 }

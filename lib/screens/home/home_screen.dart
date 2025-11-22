@@ -20,6 +20,7 @@ class HomeScreen extends StatelessWidget {
     final List<ImagesModel> news = isDarkMode
         ? newsLightImages
         : newsDarkImages;
+   
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -54,6 +55,15 @@ class HomeScreen extends StatelessWidget {
                   ViewAllOverlay(
                     isLeft: news[index].postions == 'left',
                     label: AppLocalizations.of(context)!.view_all,
+                    onTap: () {
+
+                      var categoryNewsData = news[index].category;
+                      Navigator.pushNamed(
+                        context,
+                        AppRoutes.categoryRouteName,
+                        arguments: categoryNewsData,
+                      );
+                    },
                   ),
                 ],
               ),

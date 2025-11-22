@@ -20,7 +20,7 @@ class ArticleProvider with ChangeNotifier {
   }
 
   Future<void> getCategoryNewsData(String category) async {
-    categoryNewsList = await appApiService.getCategoryData(category);
+    newsList = await appApiService.getCategoryData(category);
     isLoading = true;
     notifyListeners();
   }

@@ -25,18 +25,16 @@ class AppApiServiceImpl implements AppApiService {
 
     try {
       Response response = await dio
-          .get('https://newsapi.org/v2/everything?q=Apple&apiKey=$apiKey');
+          .get('https://newsapi.org/v2/everything?q=apple&sortBy=popularity&apiKey=$apiKey');
       // log(response.data.toString());
       if (response.statusCode == 200) {
         // articles = List<Map<String, dynamic>>.from(response.data['articles']);
         // return articles;
         var jsonData = response.data;
         // log("=====> JSON-DATA$jsonData");
-        Articles articles =
-            Articles.fromJson(jsonData);
-        List<Article> articleList = articles.articles
-            .map((e) => Article.fromJson(e))
-            .toList();
+        Articles articles = Articles.fromJson(jsonData);
+        List<Article> articleList =
+            articles.articles.map((e) => Article.fromJson(e)).toList();
         log("ARTICLE LIST${articleList.first.title}");
         return articleList;
       }
@@ -48,10 +46,10 @@ class AppApiServiceImpl implements AppApiService {
 
   @override
   Future<List<Article>> getCategoryData(String category) async {
-    // List<Map<String, dynamic>> articles = [];
     try {
       Response response = await dio.get(
           'https://newsapi.org/v2/top-headlines?country=us&category=$category&apiKey=$apiKey');
+     
 
       log(response.data.toString());
 
@@ -61,8 +59,8 @@ class AppApiServiceImpl implements AppApiService {
         var jsonData = response.data;
         // log("=====> JSON-DATA$jsonData");
         Articles articles = Articles.fromJson(jsonData);
-        List<Article> articleList = articles.articles
-            .map((e) => Article.fromJson(e)).toList();
+        List<Article> articleList =
+            articles.articles.map((e) => Article.fromJson(e)).toList();
         log("ARTICLE LIST${articleList.first.title}");
         return articleList;
       }
@@ -82,8 +80,8 @@ class AppApiServiceImpl implements AppApiService {
       if (response.statusCode == 200) {
         var jsonData = response.data;
         Articles articles = Articles.fromJson(jsonData);
-        List<Article> articleList = articles.articles
-            .map((e) => Article.fromJson(e)).toList();
+        List<Article> articleList =
+            articles.articles.map((e) => Article.fromJson(e)).toList();
         log("ARTICLE LIST${articleList.first.title}");
         return articleList;
       }

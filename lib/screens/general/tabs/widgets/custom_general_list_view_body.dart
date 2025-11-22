@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/l10n/app_localizations.dart';
+import 'package:news_app/model/article_model.dart';
 import 'package:news_app/utils/app_routes.dart';
-
-import '../../../../model/images_model.dart';
 
 class CustomGeneralListViewBody extends StatelessWidget {
   const CustomGeneralListViewBody({
@@ -12,7 +11,7 @@ class CustomGeneralListViewBody extends StatelessWidget {
   });
 
   final Size size;
-  final List<ImagesModel> news;
+  final List<Article> news;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +27,7 @@ class CustomGeneralListViewBody extends StatelessWidget {
               border: Border.all(color: Colors.black, width: 1),
             ),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
                   height: size.height * 0.4,
@@ -35,7 +35,7 @@ class CustomGeneralListViewBody extends StatelessWidget {
                     color: Colors.grey,
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
-                      image: AssetImage(news[index].image),
+                      image: NetworkImage(news[index].urlToImage ?? ''),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -44,7 +44,7 @@ class CustomGeneralListViewBody extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: InkWell(
                     child: Text(
-                      'some text some text some text some text some text some text',
+                      news[index].title,
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 16,
@@ -77,7 +77,8 @@ class CustomGeneralListViewBody extends StatelessWidget {
                                     color: Colors.grey,
                                     borderRadius: BorderRadius.circular(10),
                                     image: DecorationImage(
-                                      image: AssetImage(news[index].image),
+                                      image: NetworkImage(
+                                          news[index].urlToImage ?? ''),
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -85,7 +86,8 @@ class CustomGeneralListViewBody extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    'some text some text some text some text some text some text',
+                                    news[index].description ??
+                                        'No description available',
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 16,
@@ -95,18 +97,12 @@ class CustomGeneralListViewBody extends StatelessWidget {
                                 ),
                                 InkWell(
                                   onTap: () {
+                                    Navigator.pop(context);
+
                                     Navigator.pushNamed(
                                       context,
                                       AppRoutes.detailRouteName,
-                                      arguments: {
-                                        "appBarTitle":
-                                            "ABC News",
-                                        "image": news[index].image,
-                                        "content":
-                                            "some text some text some text some text some text some text",
-                                        "senderName": "Joy Haworth",
-                                        "time": "October8, 2024 9:38 AM"
-                                      },
+                                      arguments: news[index],
                                     );
                                   },
                                   child: Container(
@@ -121,7 +117,8 @@ class CustomGeneralListViewBody extends StatelessWidget {
                                     child: Text(
                                       AppLocalizations.of(
                                         context,
-                                      )!.view_full_article,
+                                      )!
+                                          .view_full_article,
                                       style: const TextStyle(
                                         color: Colors.white,
                                       ),
@@ -139,12 +136,12 @@ class CustomGeneralListViewBody extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      'By Joy Haworth',
+                      news[index].author ?? 'Unknown Author',
                       style: TextStyle(color: Colors.grey),
                     ),
                     Expanded(child: Container()),
                     Text(
-                      '15 minutes ago',
+                      news[index].publishedAt.toString(),
                       style: TextStyle(color: Colors.grey),
                     ),
                   ],

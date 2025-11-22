@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/controller/articale_provider.dart';
+import 'package:news_app/model/article_model.dart';
+import 'package:provider/provider.dart';
 
-import '../../model/images_model.dart';
 import '../general/tabs/widgets/custom_general_list_view_body.dart';
 
 class SearchScreen extends StatelessWidget {
-   SearchScreen({super.key});
-final List<ImagesModel> newsLightImages = ImagesModel.lightImages;
-  final List<ImagesModel> newsDarkImages = ImagesModel.darkImages;
+  const SearchScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-     final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     var size = MediaQuery.of(context).size;
-    final List<ImagesModel> news = isDarkMode
-        ? newsLightImages
-        : newsDarkImages;
+
+    final articleProvider = Provider.of<ArticleProvider>(context);
+    final List<Article> news = articleProvider.newsList;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -22,15 +22,15 @@ final List<ImagesModel> newsLightImages = ImagesModel.lightImages;
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
-                controller: TextEditingController(),
-                style: const TextStyle(color: Colors.white),
+                onChanged: (value) {
+                  articleProvider.searchNews(value);
+                },
                 decoration: InputDecoration(
-                  prefixIcon:  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.search),
-                  ),
+                  prefixIcon: Icon(Icons.search),
                   suffixIcon: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // articleProvider.clearSearch();
+                    },
                     icon: const Icon(Icons.clear),
                   ),
                   border: OutlineInputBorder(
@@ -40,9 +40,9 @@ final List<ImagesModel> newsLightImages = ImagesModel.lightImages;
                 ),
               ),
             ),
-            SizedBox(height: size.height * 0.8,
-              child: CustomGeneralListViewBody(news: news, size: size)),
-
+            SizedBox(
+                height: size.height * 0.8,
+                child: CustomGeneralListViewBody(news: news, size: size)),
           ],
         ),
       ),

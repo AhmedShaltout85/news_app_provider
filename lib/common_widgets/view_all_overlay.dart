@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/utils/app_routes.dart';
 
 class ViewAllOverlay extends StatelessWidget {
   final bool isLeft;
   final String label;
+  final void Function()? onTap;
 
   const ViewAllOverlay({
     super.key,
     required this.isLeft,
     required this.label,
+    required this.onTap,
   });
 
   @override
@@ -68,9 +69,7 @@ class ViewAllOverlay extends StatelessWidget {
           ];
 
     return InkWell(
-      onTap: () {
-        Navigator.pushNamed(context, AppRoutes.generalRouteName);
-      },
+      onTap: onTap,
       child: Container(
         padding: EdgeInsets.only(
           right: isLeft ? 10 : 0,
