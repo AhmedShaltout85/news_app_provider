@@ -8,7 +8,15 @@ import '../network_repos/remote_repos/app_api_service_impl.dart';
 
 class ArticleProvider with ChangeNotifier {
   List<Article> newsList = [];
-  List<Article> categoryNewsList = [];
+  List<Article> newsGeneralList = [];
+  List<Article> newsBusinessList = [];
+  List<Article> newsEntertainmentList = [];
+  List<Article> newsHealthList = [];
+  List<Article> newsScienceList = [];
+  List<Article> newsSportsList = [];
+  List<Article> newsTechnologyList = [];
+  List<Article> newsSelectedCategoryList = [];
+
   bool isLoading = false;
 
   final AppApiService appApiService = AppApiServiceImpl();
@@ -20,7 +28,10 @@ class ArticleProvider with ChangeNotifier {
   }
 
   Future<void> getCategoryNewsData(String category) async {
-    newsList = await appApiService.getCategoryData(category);
+    loadSelectedCategoryNewsList(category);
+    newsSelectedCategoryList = await appApiService.getCategoryData(category);
+    log("NEWS SELECTED CATEGORY LIST LENGTH ${newsSelectedCategoryList.length}");
+    log(  "CATEGORY ===> $category");
     isLoading = true;
     notifyListeners();
   }
@@ -36,5 +47,33 @@ class ArticleProvider with ChangeNotifier {
           .toList();
       notifyListeners();
     }
+  }
+  void loadSelectedCategoryNewsList(String category) {
+    switch (category.toLowerCase()) {
+      case 'general':
+        newsSelectedCategoryList = newsGeneralList;
+        break;
+      case 'business':
+        newsSelectedCategoryList = newsBusinessList;
+        break;
+      case 'entertainment':
+        newsSelectedCategoryList = newsEntertainmentList;
+        break;
+      case 'health':
+        newsSelectedCategoryList = newsHealthList;
+        break;
+      case 'science':
+        newsSelectedCategoryList = newsScienceList;
+        break;
+      case 'sports':
+        newsSelectedCategoryList = newsSportsList;
+        break;
+      case 'technology':
+        newsSelectedCategoryList = newsTechnologyList;
+        break;
+      default:
+        newsSelectedCategoryList = [];
+    }
+    notifyListeners();
   }
 }

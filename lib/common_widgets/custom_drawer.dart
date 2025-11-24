@@ -9,6 +9,8 @@ import 'package:news_app/common_widgets/drawer_list_gap.dart';
 import 'package:news_app/common_widgets/refactor_drawer_list_tile_item.dart';
 import 'package:provider/provider.dart';
 
+import '../utils/app_routes.dart';
+
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
 
@@ -30,11 +32,18 @@ class CustomDrawer extends StatelessWidget {
           RefactorDrawerListTileItem(
             imageName: 'icon_home.png',
             titleName: AppLocalizations.of(context)!.go_to_home,
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, AppRoutes.homeRouteName);
+            },      
           ),
           DrawerListGap(),
           RefactorDrawerListTileItem(
+            
             imageName: 'icon_theme.png',
             titleName: AppLocalizations.of(context)!.theme,
+            onTap: () {
+            },
           ),
           CustomDropDownMenu(
             selectedValue: currentTheme, // Use provider value directly
@@ -54,6 +63,9 @@ class CustomDrawer extends StatelessWidget {
           RefactorDrawerListTileItem(
             imageName: 'icon_language.png', // Changed from icon_home.png
             titleName: AppLocalizations.of(context)!.language,
+            onTap: () {
+              // Navigator.pop(context);
+            },
           ),
           CustomDropDownMenu(
             selectedValue: currentLanguage, // Use provider value directly

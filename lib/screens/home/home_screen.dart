@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:news_app/l10n/app_localizations.dart';
 import 'package:news_app/model/images_model.dart';
 import 'package:news_app/common_widgets/view_all_overlay.dart';
+import 'package:provider/provider.dart';
 
+import '../../controller/articale_provider.dart';
 import '../../utils/app_routes.dart';
 import '../../common_widgets/custom_drawer.dart';
 
@@ -56,8 +58,11 @@ class HomeScreen extends StatelessWidget {
                     isLeft: news[index].postions == 'left',
                     label: AppLocalizations.of(context)!.view_all,
                     onTap: () {
-
+                        //TODO: Fetch category news data
                       var categoryNewsData = news[index].category;
+                      Provider.of<ArticleProvider>(context, listen: false)
+                          .getCategoryNewsData(categoryNewsData);
+                          // Navigate to Category Screen with selected category
                       Navigator.pushNamed(
                         context,
                         AppRoutes.categoryRouteName,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/screens/general/category_screen.dart';
+import 'package:news_app/screens/category/category_screen.dart';
 import 'package:news_app/screens/home/home_screen.dart';
 import 'package:news_app/l10n/app_localizations.dart';
 import 'package:news_app/controller/locale_provider.dart';
@@ -20,7 +20,17 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
         ChangeNotifierProvider(create: (_) => LocaleProvider()),
-        ChangeNotifierProvider(create: (_) => ArticleProvider()..getNewsData()),
+        ChangeNotifierProvider(
+            create: (_) => ArticleProvider()
+              ..getNewsData()
+              ..getCategoryNewsData("general")
+              ..getCategoryNewsData("business")
+              ..getCategoryNewsData("entertainment")
+              ..getCategoryNewsData("health")
+              ..getCategoryNewsData("science")
+              ..getCategoryNewsData("sports")
+              ..getCategoryNewsData("technology")
+              ),
       ],
       child: const MyApp(),
     ),
@@ -51,7 +61,6 @@ class MyApp extends StatelessWidget {
       darkTheme: AppTheme.darkTheme,
       themeMode: themeProvider.themeMode,
       locale: localeProvider.locale,
-    
     );
   }
 }

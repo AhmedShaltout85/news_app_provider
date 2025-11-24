@@ -21,7 +21,6 @@ class AppApiServiceImpl implements AppApiService {
 
   @override
   Future<List<Article>> getNewsData() async {
-    // List<Map<String, dynamic>> articles = [];
 
     try {
       Response response = await dio

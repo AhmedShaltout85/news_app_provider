@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class RefactorDrawerListTileItem extends StatelessWidget {
   final String imageName;
   final String titleName;
+  final VoidCallback onTap;
   const RefactorDrawerListTileItem({
-    super.key, required this.imageName, required this.titleName,
+    super.key, required this.imageName, required this.titleName, required this.onTap,
   });
 
   @override
@@ -16,9 +17,7 @@ class RefactorDrawerListTileItem extends StatelessWidget {
         height: 25,
       ),
       title: Text(titleName),
-      onTap: () {
-        Navigator.pop(context);
-      },
+      onTap: onTap,
     );
   }
 }
