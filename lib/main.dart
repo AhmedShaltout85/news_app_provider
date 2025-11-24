@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/network_repos/local_repos/cached_data.dart';
 import 'package:news_app/screens/category/category_screen.dart';
 import 'package:news_app/screens/home/home_screen.dart';
 import 'package:news_app/l10n/app_localizations.dart';
@@ -15,13 +16,26 @@ import 'network_repos/remote_repos/app_api_service_impl.dart';
 import 'screens/details/detail_screen.dart';
 import 'screens/news_test_screen/news.dart';
 
-void main() {
+void main() async{
+   WidgetsFlutterBinding.ensureInitialized();
+  
+  // Initialize SharedPreferences service
+  final prefsService = await SharedPreferencesService.getInstance();
+  
+  // Create providers with the service
+  final themeProvider = ThemeProvider(prefsService);
+  final localeProvider = LocaleProvider(prefsService);
+  
+  // Load saved preferences
+  await themeProvider.loadThemeFromPrefs();
+  await localeProvider.loadLocaleFromPrefs();
   AppApiServiceImpl.init();
+
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => ThemeProvider()),
-        ChangeNotifierProvider(create: (_) => LocaleProvider()),
+        ChangeNotifierProvider(create: (_) => themeProvider),
+        ChangeNotifierProvider(create: (_) => localeProvider),
         ChangeNotifierProvider(
           create: (_) => ArticleProvider()
             ..getNewsData()
