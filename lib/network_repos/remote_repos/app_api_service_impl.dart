@@ -7,24 +7,24 @@ import 'package:news_app/network_repos/remote_repos/app_api_service.dart';
 import 'package:news_app/utils/app_constants.dart';
 
 class AppApiServiceImpl implements AppApiService {
-  late Dio dio;
 
-  // Private constructor
-  AppApiServiceImpl._() {
-    dio = Dio();
+  static late Dio dio;
+
+  static init() {
+    dio = Dio(BaseOptions(
+      baseUrl: 'https://newsapi.org/v2/',
+      connectTimeout: const Duration(seconds: 10),
+      receiveTimeout: const Duration(seconds: 10),
+      receiveDataWhenStatusError: true,
+    ));
   }
-
-  static final AppApiServiceImpl _instance = AppApiServiceImpl._();
-
-  // Factory constructor returns the same instance
-  factory AppApiServiceImpl() => _instance;
 
   @override
   Future<List<Article>> getNewsData() async {
 
     try {
       Response response = await dio
-          .get('https://newsapi.org/v2/everything?q=apple&sortBy=popularity&apiKey=$apiKey');
+          .get('everything?q=apple&sortBy=popularity&apiKey=$apiKey');
       // log(response.data.toString());
       if (response.statusCode == 200) {
         // articles = List<Map<String, dynamic>>.from(response.data['articles']);
@@ -47,7 +47,7 @@ class AppApiServiceImpl implements AppApiService {
   Future<List<Article>> getCategoryData(String category) async {
     try {
       Response response = await dio.get(
-          'https://newsapi.org/v2/top-headlines?country=us&category=$category&apiKey=$apiKey');
+          'top-headlines?country=us&category=$category&apiKey=$apiKey');
      
 
       log(response.data.toString());
@@ -74,7 +74,7 @@ class AppApiServiceImpl implements AppApiService {
     List<Article> articles = [];
     try {
       Response response = await dio
-          .get('https://newsapi.org/v2/everything?q=$query&apiKey=$apiKey');
+          .get('everything?q=$query&apiKey=$apiKey');
       log(response.data.toString());
       if (response.statusCode == 200) {
         var jsonData = response.data;
@@ -88,5 +88,10 @@ class AppApiServiceImpl implements AppApiService {
       log(e.toString());
     }
     return articles;
+  }
+  //fetch data with dio package no model parsing
+  @override
+  Future<Response> fetchData(String endpoint, Map<String, dynamic> params) async {
+    return await dio.get(endpoint, queryParameters: params);
   }
 }

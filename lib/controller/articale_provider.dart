@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/model/article_model.dart';
 
@@ -75,5 +76,10 @@ class ArticleProvider with ChangeNotifier {
         newsSelectedCategoryList = [];
     }
     notifyListeners();
+  }
+
+  //fetch data with dio package no model parsing
+  Future<Response>fetchData(String endpoint, Map<String, dynamic> params) async {
+    return await appApiService.fetchData(endpoint, params);
   }
 }
