@@ -16,16 +16,16 @@ import 'network_repos/remote_repos/app_api_service_impl.dart';
 import 'screens/details/detail_screen.dart';
 import 'screens/news_test_screen/news.dart';
 
-void main() async{
-   WidgetsFlutterBinding.ensureInitialized();
-  
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   // Initialize SharedPreferences service
   final prefsService = await SharedPreferencesService.getInstance();
-  
+
   // Create providers with the service
   final themeProvider = ThemeProvider(prefsService);
   final localeProvider = LocaleProvider(prefsService);
-  
+
   // Load saved preferences
   await themeProvider.loadThemeFromPrefs();
   await localeProvider.loadLocaleFromPrefs();
@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
     final localeProvider = Provider.of<LocaleProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.newsRouteName,
+      initialRoute: AppRoutes.splashRouteName,
       routes: {
         AppRoutes.splashRouteName: (context) => SplashScreen(),
         AppRoutes.homeRouteName: (context) => HomeScreen(),

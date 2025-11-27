@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 class RefactorDrawerListTileItem extends StatelessWidget {
   final String imageName;
   final String titleName;
-  final VoidCallback onTap;
-  const RefactorDrawerListTileItem({
-    super.key, required this.imageName, required this.titleName, required this.onTap,
+  VoidCallback? onTap;
+  RefactorDrawerListTileItem({
+    super.key,
+    required this.imageName,
+    required this.titleName,
+    this.onTap,
   });
 
   @override

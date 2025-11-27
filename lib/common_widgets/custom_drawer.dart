@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:news_app/l10n/app_localizations.dart';
 import 'package:news_app/controller/locale_provider.dart';
@@ -35,15 +34,12 @@ class CustomDrawer extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
               Navigator.pushNamed(context, AppRoutes.homeRouteName);
-            },      
+            },
           ),
           DrawerListGap(),
           RefactorDrawerListTileItem(
-            
             imageName: 'icon_theme.png',
             titleName: AppLocalizations.of(context)!.theme,
-            onTap: () {
-            },
           ),
           CustomDropDownMenu(
             selectedValue: currentTheme, // Use provider value directly
@@ -63,9 +59,6 @@ class CustomDrawer extends StatelessWidget {
           RefactorDrawerListTileItem(
             imageName: 'icon_language.png', // Changed from icon_home.png
             titleName: AppLocalizations.of(context)!.language,
-            onTap: () {
-              // Navigator.pop(context);
-            },
           ),
           CustomDropDownMenu(
             selectedValue: currentLanguage, // Use provider value directly
