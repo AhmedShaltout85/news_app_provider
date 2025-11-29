@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:news_app/common_widgets/commoncomponents.dart';
 import 'package:news_app/utils/app_routes.dart';
 import 'package:provider/provider.dart';
 
@@ -37,7 +38,8 @@ class CategoryScreen extends StatelessWidget {
           actions: [
             IconButton(
               onPressed: () =>
-                  Navigator.pushNamed(context, AppRoutes.searchRouteName),
+                  // Navigator.pushNamed(context, AppRoutes.searchRouteName),
+                  nanvigateTo(context, AppRoutes.searchRouteName),
               icon: const Icon(Icons.search),
             ),
           ],

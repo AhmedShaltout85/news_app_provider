@@ -42,12 +42,23 @@ class DetailScreen extends StatelessWidget {
                 style: TextStyle(color: Colors.grey.shade500, fontSize: 11),
               ),
               const SizedBox(height: 20),
-              Text(
-                'By  ${data.author ?? 'Unknown Author'}',
-                style: const TextStyle(
-                  color: Colors.blue,
-                  fontSize: 11,
-                  decoration: TextDecoration.underline,
+         
+              RichText(
+                text: TextSpan(
+                  text: 'By ',
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 11,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: data.author ?? 'Unknown Author',
+                      style: const TextStyle(
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Text(data.publishedAt.toString(),

@@ -25,8 +25,8 @@ class CustomDropDownMenu extends StatelessWidget {
       child: DropdownButtonFormField<String>(
         style: TextStyle(color: Colors.white),
         dropdownColor: Colors.black,
-        initialValue: selectedValue,
-        // value: selectedValue,
+        // initialValue: selectedValue,
+        value: selectedValue,
         decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
         ),
