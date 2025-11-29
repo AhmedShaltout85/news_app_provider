@@ -69,7 +69,7 @@ class MyApp extends StatelessWidget {
     final localeProvider = Provider.of<LocaleProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.splashRouteName,
+      initialRoute: AppRoutes.homeRouteName,
       routes: {
         AppRoutes.splashRouteName: (context) => SplashScreen(),
         AppRoutes.homeRouteName: (context) => HomeScreen(),
