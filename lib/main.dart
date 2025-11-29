@@ -1,5 +1,6 @@
+
 import 'package:flutter/material.dart';
-import 'package:news_app/network_repos/local_repos/cached_data.dart';
+import 'package:news_app/network_repos/local_repos/cache_helper.dart';
 import 'package:news_app/screens/category/category_screen.dart';
 import 'package:news_app/screens/home/home_screen.dart';
 import 'package:news_app/l10n/app_localizations.dart';
@@ -20,7 +21,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize SharedPreferences service
-  final prefsService = await SharedPreferencesService.getInstance();
+  final prefsService = await CacheHelper.getInstance();
 
   // Create providers with the service
   final themeProvider = ThemeProvider(prefsService);
@@ -30,6 +31,12 @@ void main() async {
   await themeProvider.loadThemeFromPrefs();
   await localeProvider.loadLocaleFromPrefs();
   AppApiServiceImpl.init();
+
+  // Example usage of SecureCacheHelper
+  // String
+  // await SecureCacheHelper.saveSecureData(key: "api_key", value: apiKey);
+  // var secure= await SecureCacheHelper.getSecureData(key: "api_key");
+  // log(  "Secure Data: $secure");
 
   runApp(
     MultiProvider(
