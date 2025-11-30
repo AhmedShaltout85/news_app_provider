@@ -41,7 +41,7 @@ class SearchScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-                height: size.height * 0.8,
+                height: size.height,
                 child: CustomGeneralListViewBody(news: news, size: size)),
           ],
         ),
