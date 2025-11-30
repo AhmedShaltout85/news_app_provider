@@ -23,12 +23,12 @@ flutter_native_splash:
   background_image: assets/images/splash_screen_light.png
   background_image_dark: assets/images/splash_screen_dark.png
 
-  # android_12:
-  #   image: assets/light_theme_android_12_splash.png
-  #   image_dark: assets/dark_theme_android_12_splash.png
-  #   color: "#F1EFE7"
-  #   color_dark: "#0F1629"
-  #   branding: assets/splash_branding_light_theme.png
-  #   branding_dark: assets/splash_branding_dark_theme.png
+  android_12:
+    image: assets/images/logo_light.png
+    image_dark: assets/images/logo_dark.png
+    color: "#FFFFFF"
+    color_dark: "#171717"
+    branding: assets/images/news_branding_light.png
+    branding_dark: assets/images/news_branding_dark.png
 
    
