@@ -134,12 +134,13 @@ class CustomGeneralListViewBody extends StatelessWidget {
                   ),
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       news[index].author ?? 'Unknown Author',
                       style: TextStyle(color: Colors.grey),
                     ),
-                    Expanded(child: Container()),
+                    // Expanded(child: Container()),
                     Text(
                       news[index].publishedAt.toString(),
                       style: TextStyle(color: Colors.grey),

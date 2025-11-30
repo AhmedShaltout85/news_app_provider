@@ -17,7 +17,7 @@ class SearchScreen extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
+        child: ListView(
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),

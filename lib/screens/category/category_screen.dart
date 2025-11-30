@@ -30,6 +30,8 @@ class CategoryScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(category),
           bottom: TabBar(
+            dividerColor: Colors.transparent,
+            indicatorColor: Colors.black,
             isScrollable: true,
             tabs: tabs.map((tab) => Tab(text: tab)).toList(),
           ),
