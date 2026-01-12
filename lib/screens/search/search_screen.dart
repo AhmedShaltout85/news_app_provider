@@ -17,7 +17,7 @@ class SearchScreen extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
+        child: ListView(
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -41,7 +41,7 @@ class SearchScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-                height: size.height * 0.8,
+                height: size.height,
                 child: CustomGeneralListViewBody(news: news, size: size)),
           ],
         ),

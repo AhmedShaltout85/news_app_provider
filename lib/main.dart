@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:news_app/network_repos/local_repos/cache_helper.dart';
 import 'package:news_app/screens/category/category_screen.dart';
@@ -31,8 +30,11 @@ void main() async {
   await themeProvider.loadThemeFromPrefs();
   await localeProvider.loadLocaleFromPrefs();
   AppApiServiceImpl.init();
+<<<<<<< HEAD
   
 
+=======
+>>>>>>> 75cb85b5b14b9975bf330419f3d69fedda3ec45c
   // Example usage of SecureCacheHelper
   // String
   // await SecureCacheHelper.saveSecureData(key: "api_key", value: apiKey);

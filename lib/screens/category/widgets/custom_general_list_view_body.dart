@@ -17,6 +17,8 @@ class CustomGeneralListViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemBuilder: (BuildContext context, int index) {
+        final minute =
+            DateTime.parse('${news[index].publishedAt}').minute.toString();
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
@@ -134,14 +136,14 @@ class CustomGeneralListViewBody extends StatelessWidget {
                   ),
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      news[index].author ?? 'Unknown Author',
+                      'By: ${news[index].author ?? 'Unknown Author'}',
                       style: TextStyle(color: Colors.grey),
                     ),
-                    Expanded(child: Container()),
                     Text(
-                      news[index].publishedAt.toString(),
+                      '$minute minutes ago',
                       style: TextStyle(color: Colors.grey),
                     ),
                   ],

@@ -10,7 +10,7 @@ class DetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final Article data = ModalRoute.of(context)!.settings.arguments as dynamic;
 
-       return Scaffold(
+    return Scaffold(
       appBar: AppBar(
         centerTitle: false,
         title: Text(
@@ -42,7 +42,6 @@ class DetailScreen extends StatelessWidget {
                 style: TextStyle(color: Colors.grey.shade500, fontSize: 11),
               ),
               const SizedBox(height: 20),
-         
               RichText(
                 text: TextSpan(
                   text: 'By ',
@@ -54,9 +53,9 @@ class DetailScreen extends StatelessWidget {
                     TextSpan(
                       text: data.author ?? 'Unknown Author',
                       style: const TextStyle(
-                        color: Colors.blue,
-                        decoration: TextDecoration.underline,
-                      ),
+                          color: Colors.blue,
+                          decoration: TextDecoration.underline,
+                          fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),

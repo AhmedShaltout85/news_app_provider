@@ -11,21 +11,61 @@ class ImagesModel {
   });
 
   static List<ImagesModel> lightImages = [
-    ImagesModel(image: AppAssets.generalLightImage, postions: 'left', category: 'general'),
-    ImagesModel(image: AppAssets.businessLightImage, postions: 'right', category: 'business'),
-    ImagesModel(image: AppAssets.sportsLightImage, postions: 'left', category: 'sports'),
-    ImagesModel(image: AppAssets.entertainmentLightImage, postions: 'left', category: 'entertainment'),
-    ImagesModel(image: AppAssets.scienceLightImage, postions: 'left', category: 'science'),
-    ImagesModel(image: AppAssets.healthLightImage, postions: 'right', category: 'health'),
-    ImagesModel(image: AppAssets.technologyLightImage, postions: 'right', category: 'technology'),
+    ImagesModel(
+        image: AppAssets.generalLightImage,
+        postions: 'left',
+        category: 'General'),
+    ImagesModel(
+        image: AppAssets.businessLightImage,
+        postions: 'right',
+        category: 'Business'),
+    ImagesModel(
+        image: AppAssets.sportsLightImage,
+        postions: 'left',
+        category: 'Sports'),
+    ImagesModel(
+        image: AppAssets.entertainmentLightImage,
+        postions: 'left',
+        category: 'Entertainment'),
+    ImagesModel(
+        image: AppAssets.scienceLightImage,
+        postions: 'left',
+        category: 'Science'),
+    ImagesModel(
+        image: AppAssets.healthLightImage,
+        postions: 'right',
+        category: 'Health'),
+    ImagesModel(
+        image: AppAssets.technologyLightImage,
+        postions: 'right',
+        category: 'Technology'),
   ];
   static List<ImagesModel> darkImages = [
-    ImagesModel(image: AppAssets.generalDarkImage, postions: 'left', category: 'general'),
-    ImagesModel(image: AppAssets.businessDarkImage, postions: 'right', category: 'business'),
-    ImagesModel(image: AppAssets.sportsDarkImage, postions: 'left', category: 'sports'),
-    ImagesModel(image: AppAssets.entertainmentDarkImage, postions: 'left', category: 'entertainment'),
-    ImagesModel(image: AppAssets.scienceDarkImage, postions: 'left', category: 'science'),
-    ImagesModel(image: AppAssets.healthDarkImage, postions: 'right', category: 'health'),
-    ImagesModel(image: AppAssets.technologyDarkImage, postions: 'right', category: 'technology'),
+    ImagesModel(
+        image: AppAssets.generalDarkImage,
+        postions: 'left',
+        category: 'General'),
+    ImagesModel(
+        image: AppAssets.businessDarkImage,
+        postions: 'right',
+        category: 'Business'),
+    ImagesModel(
+        image: AppAssets.sportsDarkImage, postions: 'left', category: 'Sports'),
+    ImagesModel(
+        image: AppAssets.entertainmentDarkImage,
+        postions: 'left',
+        category: 'Entertainment'),
+    ImagesModel(
+        image: AppAssets.scienceDarkImage,
+        postions: 'left',
+        category: 'Science'),
+    ImagesModel(
+        image: AppAssets.healthDarkImage,
+        postions: 'right',
+        category: 'Health'),
+    ImagesModel(
+        image: AppAssets.technologyDarkImage,
+        postions: 'right',
+        category: 'Technology'),
   ];
 }

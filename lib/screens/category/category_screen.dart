@@ -1,7 +1,5 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:news_app/common_widgets/commoncomponents.dart';
+import 'package:news_app/common_widgets/common_components.dart';
 import 'package:news_app/utils/app_routes.dart';
 import 'package:provider/provider.dart';
 
@@ -32,6 +30,8 @@ class CategoryScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(category),
           bottom: TabBar(
+            dividerColor: Colors.transparent,
+            indicatorColor: Colors.black,
             isScrollable: true,
             tabs: tabs.map((tab) => Tab(text: tab)).toList(),
           ),
