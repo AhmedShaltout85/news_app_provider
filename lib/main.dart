@@ -7,7 +7,7 @@ import 'package:news_app/l10n/app_localizations.dart';
 import 'package:news_app/controller/locale_provider.dart';
 import 'package:news_app/controller/theme_provider.dart';
 import 'package:news_app/screens/search/search_screen.dart';
-import 'package:news_app/screens/splash/splash_screen.dart';
+// import 'package:news_app/screens/splash/splash_screen.dart';
 import 'package:news_app/utils/app_routes.dart';
 import 'package:news_app/utils/app_theme.dart';
 import 'package:provider/provider.dart';
@@ -31,12 +31,14 @@ void main() async {
   await themeProvider.loadThemeFromPrefs();
   await localeProvider.loadLocaleFromPrefs();
   AppApiServiceImpl.init();
+  
 
   // Example usage of SecureCacheHelper
   // String
   // await SecureCacheHelper.saveSecureData(key: "api_key", value: apiKey);
   // var secure= await SecureCacheHelper.getSecureData(key: "api_key");
   // log(  "Secure Data: $secure");
+
 
   runApp(
     MultiProvider(
@@ -71,7 +73,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: AppRoutes.homeRouteName,
       routes: {
-        AppRoutes.splashRouteName: (context) => SplashScreen(),
+        // AppRoutes.splashRouteName: (context) => SplashScreen(),
         AppRoutes.homeRouteName: (context) => HomeScreen(),
         AppRoutes.categoryRouteName: (context) => CategoryScreen(),
         AppRoutes.detailRouteName: (context) => DetailScreen(),
